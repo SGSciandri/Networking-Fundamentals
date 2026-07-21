@@ -31,3 +31,26 @@ To negotiate sequence synchronization maps safely before exchanging data payload
 * **DHCP (Dynamic Host Configuration Protocol):** Dynamically provisions system settings using the **DORA** sequence (**D**iscover, **O**ffer, **R**equest, **A**cknowledge).
 * **ARP (Address Resolution Protocol):** Maps a known logical software IP address to an absolute physical hardware MAC address.
 * **ICMP (Ping Tool):** Diagnostic framework used to track round-trip connectivity latency (ms) and monitor Time To Live (TTL).
+# DNS & Networking Fundamentals
+
+## DNS Hierarchy
+`admin.tryhackme.com`
+* `.com`: Top-Level Domain (TLD)
+* `tryhackme`: Second-Level Domain (SLD)
+* `admin`: Subdomain
+
+## Essential DNS Record Types
+| Record | Function | Purpose |
+| :--- | :--- | :--- |
+| **A** | Domain $\rightarrow$ IPv4 | Resolves hostname to 32-bit IP address. |
+| **AAAA** | Domain $\rightarrow$ IPv6 | Resolves hostname to 128-bit hex address. |
+| **CNAME** | Canonical Name | Aliases one domain name to another domain name. |
+| **MX** | Mail Exchange | Directs incoming mail to specified mail servers (uses priority flags). |
+| **TXT** | Text Records | Stores arbitrary strings used for ownership verification, SPF, and DKIM. |
+
+## DNS Resolution Order
+1. **Local OS Cache & Hosts File**
+2. **Recursive Resolver** (ISP or public resolvers like `1.1.1.1` / `8.8.8.8`)
+3. **Root Name Servers** (Directs query to designated TLD server)
+4. **TLD Name Servers** (Directs query to target Authoritative server)
+5. **Authoritative Name Server** (Final source of truth containing actual records)
